@@ -176,8 +176,18 @@ namespace ShapingEngine {
 			if (glyphs.size() != 0)
 				return;
 
-			// ****** SPACES ARE IMPORTANT! DO NOT REMOVE!! ****** //
+			// Farsi Alphabet
+			glyphs.insert({ L'\u0698',   Glyph(L"  \uFB8B") });				  //19 ZHEH ژ [*]
+			glyphs.insert({ L'\u0646',   Glyph(L"\uFEE7\uFEE8\uFEE6") }); 	  //34 NOON ن
+			glyphs.insert({ L'\u0647',   Glyph(L"\uFEEB\uFEEC\uFEEA") }); 	  //35 HEH ه
+			glyphs.insert({ L'\u06CC',   Glyph(L"\uFBFE\uFBFF\uFBFD") }); 	  //39 YEH Farsi ی
+			glyphs.insert({ L'\u0686',   Glyph(L"\uFB7C\uFB7D\uFB7B") }); 	  //40 CHEH چ
+			glyphs.insert({ L'\u067E',   Glyph(L"\uFB58\uFB59\uFB57") }); 	  //41 Peh پ
+			glyphs.insert({ L'\u06AF',   Glyph(L"\uFB94\uFB95\uFB93") }); 	  //42 Gaf گ
+			glyphs.insert({ L'\u06A9',   Glyph(L"\uFB90\uFB91\uFB8F") });  	  //43 Kaf ک
 
+			// ****** SPACES ARE IMPORTANT! DO NOT REMOVE!! ****** //
+			// Arabic  Alphabet
 			glyphs.insert({ L'\u0640', Glyph(L"\u0640 \u0640") }); // ـ
 			glyphs.insert({ L'\u0627', Glyph(L"  \uFE8E") }); // ا
 			glyphs.insert({ L'\u0623', Glyph(L"  \uFE84") }); // أ
