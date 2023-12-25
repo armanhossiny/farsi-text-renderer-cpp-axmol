@@ -1,5 +1,7 @@
-# arabic text renderer
-Single-Header Arabic Text Renderer Shaping Engine for axmol/cocos2dx in C++
+# فایل رندر متن فارسی در سی پلاس پلاس 
+* به همراه فونت ویزیر و لاله زار
+# Farsi and Arabic text renderer
+Single-Header Arabic and Farsi Text Renderer Shaping Engine for axmol/cocos2dx in C++
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -8,7 +10,7 @@ Single-Header Arabic Text Renderer Shaping Engine for axmol/cocos2dx in C++
 
 * Put the `ShapingEngine.hpp` file anywhere in your c++ project.
 * Include the `ShapingEngine.hpp` file and everything will be under `ShapingEngine` Namespace
-* There are arabic fonts you can try in the `arabic-fonts` folder
+* There are arabic and farsi fonts you can try in the `arabic-fonts` folder
 * There are also pixel art fonts!
 
 <!-- USAGE EXAMPLES -->
@@ -81,10 +83,10 @@ std::string arText = ShapingEngine::render_wrap(label->getTTFConfig(), str, true
 
 
 * Notice how the numbers are in correct order! (In the text, I said I would do a count down in arabic)
-* If you want arabic numbers (١ ٢ ٣ ٤ ٥ ٦ ٧ ٨ ٩ ١٠) you can call the `ShapingEngine::arabify_numbers();`
+* If you want arabic numbers (١ ٢ ٣ ٤ ٥ ٦ ٧ ٨ ٩ ١٠) you can call the `ShapingEngine::Options::_convertToArabicNumbers = true;`
 
 ```cpp
-label->setString(ShapingEngine::arabify_numbers(arText));
+ShapingEngine::Options::_convertToArabicNumbers = true;
 ```
 
    ![image](https://user-images.githubusercontent.com/45469625/218175557-7b45bfc9-b03e-4a41-900a-de0c14ff3527.png)
@@ -94,8 +96,16 @@ label->setString(ShapingEngine::arabify_numbers(arText));
 ```cpp
 void HelloWorld::update(float dt)
 {
-    auto str1 = ShapingEngine::substr(arText, (int)currentIndex++);
-    label->setString(ShapingEngine::arabify_numbers(str1));
+ShapingEngine::Options::_convertToArabicNumbers = true;
+}
+```
+
+*برای نمایش نیم فاصله`ShapingEngine::Options::_discardChars = true;` این گزینه را فعال کنید
+
+```cpp
+void HelloWorld::update(float dt)
+{
+ShapingEngine::Options::_discardChars = true;
 }
 ```
 
