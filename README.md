@@ -19,6 +19,39 @@ Single-Header Arabic and Farsi Text Renderer Shaping Engine for axmol/cocos2dx i
 * Call the function `ShapingEngine::render(your_wstring)`, a narrowed `std::string` will be returned that displays arabic letters correctly with the correct vowels too!
 
 ## Example
+*برای نمایش اعداد به فارسی این گزینه را فعال کنید
+```cpp
+void HelloWorld::update(float dt)
+{
+ShapingEngine::Options::_convertToArabicNumbers = true;
+}
+```
+
+*برای نمایش نیم فاصله`ShapingEngine::Options::_discardChars = true;` این گزینه را فعال کنید
+
+```cpp
+void HelloWorld::update(float dt)
+{
+ShapingEngine::Options::_discardChars = true;
+}
+```
+*یک مثال کامل
+```cpp
+  //نمایش نیم فاصله
+	ShapingEngine::Options::_discardChars = true;
+
+  //تبدیل اعداد به فارسی
+	ShapingEngine::Options::_convertToArabicNumbers = true;
+
+  // رندر این  کارکترها ".,<>(){}[]~`!@#$%^&*?\"':;\\\u200C"
+	bool renderSymbols = true;
+
+  // درست نمایش دادن اعداد در متن
+	bool orderNumber = true;
+
+	std::wstring wstr = L"سلام دنیا؟ 10.2";
+	std::string  result = ShapingEngine::render(wstr, renderSymbols, orderNumber);
+```
 ```cpp
 std::wstring str = L"السَلامُ عَليكُمْ ورَحْمَةُ اللّهِ وبَركَاتُهْ";
 auto label = Label::createWithTTF(ShapingEngine::render(str, false), "bitsy-font-with-arabic.ttf", 20);
@@ -92,22 +125,6 @@ ShapingEngine::Options::_convertToArabicNumbers = true;
    ![image](https://user-images.githubusercontent.com/45469625/218175557-7b45bfc9-b03e-4a41-900a-de0c14ff3527.png)
 
 * Text Scrolling, Unfortunately `std::string.substr` doesn't work with arabic text but `ShapingEngine::substr()` can be used instead, This is different from your typical substr because it scrolls from right to left (not left to right like `std::string.substr` does)
-
-```cpp
-void HelloWorld::update(float dt)
-{
-ShapingEngine::Options::_convertToArabicNumbers = true;
-}
-```
-
-*برای نمایش نیم فاصله`ShapingEngine::Options::_discardChars = true;` این گزینه را فعال کنید
-
-```cpp
-void HelloWorld::update(float dt)
-{
-ShapingEngine::Options::_discardChars = true;
-}
-```
 
 ![ezgif com-video-to-gif (1)](https://user-images.githubusercontent.com/45469625/218195340-1b816933-dfe8-4654-8ea9-8a93db6a023b.gif)
 
